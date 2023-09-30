@@ -3,11 +3,22 @@ package com.leonardojcv.springboot.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class User implements Serializable{
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+//Classe de usúario
+@Entity
+@Table(name = "tb_user")
+public class User implements Serializable{
 	//Numero de serie padrão 
 	private static final long serialVersionUID = 1L;
 	
+	//Anotações @Id e @GeneratedValue para indicar ao Spring que o Long Id será um Id de autoincremento na tabela
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String email;
