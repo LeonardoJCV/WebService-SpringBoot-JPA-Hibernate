@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +18,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tb_user")
 public class User implements Serializable{
-	//Numero de serie padrão 
+	
 	private static final long serialVersionUID = 1L;
 	
 	//Anotações @Id e @GeneratedValue para indicar ao Spring que o Long Id será um Id de autoincremento na tabela
@@ -29,6 +31,8 @@ public class User implements Serializable{
 	private String password;
 	
 	//Anotação @OneToMany informando ao Spring a relação de um para muitos mapeado pelo "client"
+	//Anotação @JsonIgnore para não entrar em loop
+	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	private List<Order>orders = new ArrayList<>();
 	

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +25,9 @@ public class Order implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	//Anotação @JasonFormat para garantir que o horario será apresentado no padrão ISO8601
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant moment;
 	
 	//Anotações @ManyToOne e @JoinColumn para indicar ao Spring que trata-se de uma relação muitos para um e FK
