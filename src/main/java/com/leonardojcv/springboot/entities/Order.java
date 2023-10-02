@@ -2,7 +2,9 @@ package com.leonardojcv.springboot.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.leonardojcv.springboot.entities.enums.OrderStatus;
@@ -13,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 //Anotação @Entity indicando que esta class é uma entidade
@@ -37,6 +40,10 @@ public class Order implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private User client;
+	
+	//id.order pois no orderItem se tem o Id, e o id tem o order
+	@OneToMany(mappedBy = "id.order")
+	private Set<OrderItem>items = new HashSet<>();
 
 	public Order() {
 
@@ -81,6 +88,10 @@ public class Order implements Serializable {
 		if (orderStatus != null) {
 			this.orderStatus = orderStatus.getCode();
 		}
+	}
+	
+	public Set<OrderItem>getItem(){
+		return items;
 	}
 
 	@Override
