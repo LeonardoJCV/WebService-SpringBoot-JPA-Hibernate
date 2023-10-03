@@ -9,6 +9,7 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.leonardojcv.springboot.entities.enums.OrderStatus;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,6 +17,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 //Anotação @Entity indicando que esta class é uma entidade
@@ -44,6 +46,10 @@ public class Order implements Serializable {
 	//id.order pois no orderItem se tem o Id, e o id tem o order
 	@OneToMany(mappedBy = "id.order")
 	private Set<OrderItem>items = new HashSet<>();
+	
+	//Associaçã mapeada para ter o mesmo Id (se pedido for Id 1, o pagamento tambem terá)
+	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+	private Payment payment;
 
 	public Order() {
 
@@ -90,7 +96,15 @@ public class Order implements Serializable {
 		}
 	}
 	
-	public Set<OrderItem>getItem(){
+	public Payment getPayment() {
+		return payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
+
+	public Set<OrderItem>getItems(){
 		return items;
 	}
 
