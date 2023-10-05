@@ -1,13 +1,17 @@
 package com.leonardojcv.springboot.resources;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.leonardojcv.springboot.entities.User;
 import com.leonardojcv.springboot.services.UserService;
@@ -35,5 +39,14 @@ public class UserResource {
 	public ResponseEntity<User>findById(@PathVariable Long id){
 		User obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
+	}
+	
+	//anotação @PostMapping para definir que este método receberá o post do HTTP
+	@PostMapping
+	public ResponseEntity<User>insert(@RequestBody User obj){
+		obj = service.insert(obj);
+		//Objeto URI para retorno do código 201 no postman, indicando a criação de um novo objeto.
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).body(obj);
 	}
 }
