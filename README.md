@@ -1,6 +1,6 @@
 # WebService with Spring Boot and JPA / Hibernate (Backend)
 ## Project Objective!
-Create using Spring Boot Framework, implementation of domain model, 
+Create a project using Spring Boot Framework, implementation of domain model, 
 structuring of logical layers (Resource, Service and Repository), Configuration of test database (H2), 
 Database population, CRUD and handling exceptions.
 ## Technologies:
