@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.leonardojcv.springboot.entities.User;
 import com.leonardojcv.springboot.repositories.UserRepository;
+import com.leonardojcv.springboot.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {
@@ -23,7 +24,7 @@ public class UserService {
 	//Método que retorna usuario por Id
 	public User findById(Long id) {
 		Optional<User>obj = repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
 	//Operação básica para inserção do objeto "user"
