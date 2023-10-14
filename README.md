@@ -1,9 +1,9 @@
-# WebService with Spring Boot and JPA / Hibernate (Backend)
-## Project Objective!
+# Java WebService API with Spring Boot | JPA | Hibernate | Maven | (Backend)
+## Project's goal!
 Create a project using Spring Boot Framework, implementation of domain model, 
 structuring of logical layers (Resource, Service and Repository), Configuration of test database (H2), 
 Database population, CRUD and handling exceptions.
-## Technologies:
+## Used technologies:
 - Java <img align="center" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
 - Spring Boot (IDE SpringToolSuite 4) <img align="center" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" />
 - Maven <img align="center" height="30" width="40" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Apache_Maven_logo.svg/1024px-Apache_Maven_logo.svg.png" /> 
@@ -14,7 +14,7 @@ Leonardo José Clemente Vieira
 ##
 Linkedin: https://www.linkedin.com/in/leonardo-jose-clemente-vieira/
 ##
-# WebService com Spring Boot e JPA / Hibernate (Backend)
+# API Java Webservice com Spring Boot | JPA | Hibernate | Maven | (Backend)
 ## Objetivo do projeto!
 Criação de Projeto utilizando a Framework Spring Boot, implementação do modelo de domínio, 
 estruturação de camadas lógicas (Resource, Service e Respository), 
